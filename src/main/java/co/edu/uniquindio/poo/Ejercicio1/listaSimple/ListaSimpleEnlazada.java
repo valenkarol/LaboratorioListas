@@ -168,6 +168,25 @@ public class ListaSimpleEnlazada<T extends Comparable<T>> implements Iterable<T>
             actual = actual.getProximo();
         }
     }
+
+    public void obtenerImpares(){
+        if (estaVacia() || primero.getProximo() == null)
+            return;
+        Nodo<T> actual = primero;
+        String mensaje= "[";
+        while (actual != null) {
+            if(actual.getDato() instanceof Integer){
+                int valor = (Integer) actual.getDato();
+                if(valor%2!=0){
+                    mensaje+= valor + " ";
+                }
+            }
+            actual.getProximo();
+        }
+        mensaje+= "]";
+        System.out.println(mensaje);
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new ListaIterator<>(primero);
