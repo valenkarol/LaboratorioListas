@@ -2,8 +2,22 @@ package co.edu.uniquindio.poo.Ejercicio1.listaSimple;
 
 public class Main {
     public static void main(String[] args) {
-        ListaSimpleEnlazada<Integer> lista1 = new ListaSimpleEnlazada<>();
-        lista1.agregarUltimo(new Nodo<>(1));
+        Polinomio p = new Polinomio();
+
+        // Polinomio: 3x^4 - 4x^2 + 11
+        p.agregarTermino(3, 4);
+        p.agregarTermino(-4, 2);
+        p.agregarTermino(11, 0);
+
+        System.out.println("Polinomio:");
+        p.mostrar();
+
+        System.out.println("\nTabla de valores:");
+        p.tablaValores();
+
+
+        /**ListaSimpleEnlazada<Integer> lista1 = new ListaSimpleEnlazada<>();
+        /lista1.agregarUltimo(new Nodo<>(1));
         lista1.agregarUltimo(new Nodo<>(2));
         lista1.agregarUltimo(new Nodo<>(3));
 
@@ -20,7 +34,7 @@ public class Main {
         lista2.mostrar();
 
         System.out.print("Lista unida: ");
-        unida.mostrar();
+        unida.mostrar();**/
     }
         //int repeticiones=lista.contadorRepetidos("A");
         //System.out.println("El numero de repeticion de dato buscado es de "+repeticiones);

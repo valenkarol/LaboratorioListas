@@ -13,6 +13,13 @@ public class ListaSimpleEnlazada<T extends Comparable<T>> implements Iterable<T>
         tamaño=0;
     }
 
+    //metodo que permita usar "priemro" en el ejercico 11
+    public Nodo<T> getPrimero() {
+        return primero;
+    }
+
+
+
     // metodo para agregar al inicio
     public void agregarPrimero(Nodo<T> newNodo){
         if (primero==null){
