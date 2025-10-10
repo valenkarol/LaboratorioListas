@@ -96,8 +96,41 @@ public class ListaCircular<T extends Comparable<T>> {
         do {
             System.out.print(actual.getDato());
             actual = actual.getProximo();
-            if (actual != primero) System.out.print(" -> ");
+            if (actual != primero) System.out.print(", ");
         } while (actual != primero);
         System.out.println("] (circular)");
+    }
+
+    //EJERCICIO 9: METODO INSERTER
+    public void insertar(T dato) {
+        Nodo<T> nuevo = new Nodo<>(dato);
+
+        if (primero == null) { // lista vacía
+            primero = nuevo;
+            nuevo.setProximo(primero); // apunta a sí mismo
+        } else {
+            Nodo<T> actual = primero;
+            while (actual.getProximo() != primero) { // busca el último
+                actual = actual.getProximo();
+            }
+            actual.setProximo(nuevo); // último apunta al nuevo
+            nuevo.setProximo(primero); // nuevo apunta al primero
+        }
+        tamaño++;
+    }
+
+    //BUSCAR
+    public boolean buscar(T dato) {
+        if (primero == null) return false; // lista vacía
+
+        Nodo<T> actual = primero;
+        do {
+            if (actual.getDato().equals(dato)) {
+                return true;
+            }
+            actual = actual.getProximo();
+        } while (actual != primero);
+
+        return false;
     }
 }
