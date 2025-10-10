@@ -2,18 +2,28 @@ package co.edu.uniquindio.poo.Ejercicio1.listaSimple;
 
 public class Main {
     public static void main(String[] args) {
-        // Creamos una lista simple enlazada de enteros
         ListaSimpleEnlazada<Integer> lista = new ListaSimpleEnlazada<>();
 
-        // Agregamos nodos en desorden
-        lista.agregarUltimo(new Nodo<>(7));
-        lista.agregarUltimo(new Nodo<>(3));
-        lista.agregarUltimo(new Nodo<>(4));
         lista.agregarUltimo(new Nodo<>(1));
         lista.agregarUltimo(new Nodo<>(2));
+        lista.agregarUltimo(new Nodo<>(3));
+        lista.agregarUltimo(new Nodo<>(4));
 
-        ListaSimpleEnlazada<Integer> impares = lista.obtenerImpares();
-        impares.mostrar();
+
+        lista.mostrar();
+    }
+
+        //ListaSimpleEnlazada<Integer> listaImpares = lista.obtenerImpares();
+        //System.out.print("Lista de impares: ");
+        //listaImpares.mostrar();  // [1, 3, 5]
+
+
+
+        //System.out.println("Lista sin pares");
+        //lista.eliminarPares();
+        //lista.mostrar();
+        //lista.obtenerCedulasConCantidadPar();// [10, 5, 8, 3, 11]
+        //lista.obtenerImpares();   // Números impares: [5, 3, 11]
 
         //System.out.println("Antes de ordenar:");
         //lista.mostrar();
@@ -30,5 +40,5 @@ public class Main {
         //    System.out.print(num + " ");
         //}
         //System.out.println();
-    }
+
 }

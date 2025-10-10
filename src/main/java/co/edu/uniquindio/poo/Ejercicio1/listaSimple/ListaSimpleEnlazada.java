@@ -25,16 +25,27 @@ public class ListaSimpleEnlazada<T extends Comparable<T>> implements Iterable<T>
         }
     }
     //metodo mostrar una lista
-    public void mostrar(){
-        Nodo<T> actual=primero;
-        String mensaje="[";
+    public void mostrar() {
+        if (estaVacia()) {
+            System.out.println("[]");
+            return;
+        }
+        Nodo<T> actual = primero;
+        String mensaje = "[";
+
         do {
-            mensaje+=actual.getDato();
-            actual=actual.getProximo();
-        }while (actual != null);
+            mensaje += actual.getDato();
+            actual = actual.getProximo();
+
+            if (actual != null) {
+                mensaje += ", ";
+            }
+
+        } while (actual != null);
         mensaje += "]";
         System.out.println(mensaje);
     }
+
     //metodo agregar de ultimo
     public void agregarUltimo(Nodo<T> newNodo){
         Nodo<T> nuevo=newNodo;
@@ -80,6 +91,7 @@ public class ListaSimpleEnlazada<T extends Comparable<T>> implements Iterable<T>
     public boolean estaVacia(){
         return primero==null;
     }
+
     //metodo para localizar
     public int localizar(T datoBusqueda){
         Nodo<T> actual=primero;
@@ -169,22 +181,102 @@ public class ListaSimpleEnlazada<T extends Comparable<T>> implements Iterable<T>
         }
     }
 
-    public void obtenerImpares(){
-        if (estaVacia() || primero.getProximo() == null)
-            return;
+
+
+    //Metodo EJEJRCICIO 1 Obtener los números de las posiciones impares
+    public void PosicionImpar(){
         Nodo<T> actual = primero;
-        String mensaje= "[";
+        int indexBusqueda =0;
+        System.out.print("Elementos en posiciones impares: ");
+
         while (actual != null) {
-            if(actual.getDato() instanceof Integer){
+            if (indexBusqueda % 2 != 0) {
+                System.out.print(actual.getDato() + " ");
+            }
+            actual = actual.getProximo();
+            indexBusqueda++;
+        }
+        System.out.println();
+    }
+
+    //EJERCICO 2: METODO DE OBTENER SOLO LAS CEDULAS DE TAMAÑO PAR
+    public void obtenerCedulasConCantidadPar() {
+        if (estaVacia()) {
+            System.out.println("La lista está vacía.");
+            return;
+        }
+        Nodo<T> actual = primero;
+        String mensaje = "[";
+        int contador = 0;
+
+        while (actual != null) {
+            Persona p = (Persona) actual.getDato(); // ya sabes que es Persona
+            int longitud = p.getCedula().length();
+            if (longitud % 2 == 0) {
+                if (contador > 0) {
+                    mensaje += ", ";
+                }
+                mensaje += " (" + p.getCedula() + ")";
+                contador++;
+            }
+            actual = actual.getProximo();
+        }
+        mensaje += "]";
+        System.out.println("Personas con cédula de longitud par: " + mensaje);
+    }
+
+    //EJERCICIO 3: ELIMINAR LOS  NUMEROS PARES DE UNA LISTA
+    public void eliminarPares() {
+        if (estaVacia()) {
+            System.out.println("La lista está vacía.");
+            return;
+        }
+        Nodo<T> actual = primero;
+        Nodo<T> anterior = null;
+        while (actual != null) {
+            if (actual.getDato() instanceof Integer) {
                 int valor = (Integer) actual.getDato();
-                if(valor%2!=0){
-                    mensaje+= valor + " ";
+                // Si es par, eliminar el nodo
+                if (valor % 2 == 0) {
+                    if (anterior == null) {
+                        // El nodo par está al inicio
+                        primero = actual.getProximo();
+                    } else {
+                        // Saltar el nodo actual
+                        anterior.setProximo(actual.getProximo());
+                    }
+                    tamaño--;
+                } else {
+                    // Solo avanzamos el puntero anterior si no eliminamos
+                    anterior = actual;
                 }
             }
-            actual.getProximo();
+            actual = actual.getProximo();
         }
-        mensaje+= "]";
-        System.out.println(mensaje);
+        System.out.println("Nodos con números pares eliminados.");
+    }
+
+    //EJERCICIO 4:CREAR UNA LISTA ENLAZADA CON SOLO LOS NUMEROS IMPARES
+    public ListaSimpleEnlazada obtenerImpares() {
+        ListaSimpleEnlazada<T> listaImpares = new ListaSimpleEnlazada<>();
+
+        if (estaVacia()) {
+            return listaImpares; // devuelve lista vacía si no hay elementos
+        }
+
+        Nodo<T> actual = primero;
+
+        while (actual != null) {
+            if (actual.getDato() instanceof Integer) {
+                int valor = (Integer) actual.getDato();
+                if (valor % 2 != 0) {
+                    listaImpares.agregarUltimo(new Nodo<>(actual.getDato()));
+                }
+            }
+            actual = actual.getProximo();
+        }
+
+        return listaImpares;
     }
 
     @Override
