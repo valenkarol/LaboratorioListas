@@ -279,6 +279,22 @@ public class ListaSimpleEnlazada<T extends Comparable<T>> implements Iterable<T>
         return listaImpares;
     }
 
+    //EJERCICIO 5: OBTENER CANTIDAD DE VECES QUE SE REPITE UN VALOR
+    public int contadorRepetidos(T datoBusqueda) {
+        if (estaVacia()) {
+            return 0;
+        }
+        Nodo<T> actual = primero;
+        int contador = 0;
+        while (actual != null) {
+            if (actual.getDato().equals(datoBusqueda)) {
+                contador++;
+            }
+            actual = actual.getProximo();
+        }
+        return contador;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new ListaIterator<>(primero);

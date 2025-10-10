@@ -2,16 +2,22 @@ package co.edu.uniquindio.poo.Ejercicio1.listaSimple;
 
 public class Main {
     public static void main(String[] args) {
-        ListaSimpleEnlazada<Integer> lista = new ListaSimpleEnlazada<>();
+        ListaSimpleEnlazada<String> lista = new ListaSimpleEnlazada<>();
 
-        lista.agregarUltimo(new Nodo<>(1));
-        lista.agregarUltimo(new Nodo<>(2));
-        lista.agregarUltimo(new Nodo<>(3));
-        lista.agregarUltimo(new Nodo<>(4));
+        lista.agregarUltimo(new Nodo<>("A"));
+        lista.agregarUltimo(new Nodo<>("B"));
+        lista.agregarUltimo(new Nodo<>("A"));
+        lista.agregarUltimo(new Nodo<>("C"));
+        lista.agregarUltimo(new Nodo<>("T"));
+        lista.agregarUltimo(new Nodo<>("A"));
+        lista.agregarUltimo(new Nodo<>("A"));
 
 
         lista.mostrar();
     }
+        //int repeticiones=lista.contadorRepetidos("A");
+        //System.out.println("El numero de repeticion de dato buscado es de "+repeticiones);
+
 
         //ListaSimpleEnlazada<Integer> listaImpares = lista.obtenerImpares();
         //System.out.print("Lista de impares: ");
