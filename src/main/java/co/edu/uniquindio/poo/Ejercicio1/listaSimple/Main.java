@@ -2,18 +2,25 @@ package co.edu.uniquindio.poo.Ejercicio1.listaSimple;
 
 public class Main {
     public static void main(String[] args) {
-        ListaSimpleEnlazada<String> lista = new ListaSimpleEnlazada<>();
+        ListaSimpleEnlazada<Integer> lista1 = new ListaSimpleEnlazada<>();
+        lista1.agregarUltimo(new Nodo<>(1));
+        lista1.agregarUltimo(new Nodo<>(2));
+        lista1.agregarUltimo(new Nodo<>(3));
 
-        lista.agregarUltimo(new Nodo<>("A"));
-        lista.agregarUltimo(new Nodo<>("B"));
-        lista.agregarUltimo(new Nodo<>("A"));
-        lista.agregarUltimo(new Nodo<>("C"));
-        lista.agregarUltimo(new Nodo<>("T"));
-        lista.agregarUltimo(new Nodo<>("A"));
-        lista.agregarUltimo(new Nodo<>("A"));
+        ListaSimpleEnlazada<Integer> lista2 = new ListaSimpleEnlazada<>();
+        lista2.agregarUltimo(new Nodo<>(4));
+        lista2.agregarUltimo(new Nodo<>(5));
 
+        ListaSimpleEnlazada<Integer> unida = ListaSimpleEnlazada.concatenar(lista1, lista2);
 
-        lista.mostrar();
+        System.out.print("Lista 1: ");
+        lista1.mostrar();
+
+        System.out.print("Lista 2: ");
+        lista2.mostrar();
+
+        System.out.print("Lista unida: ");
+        unida.mostrar();
     }
         //int repeticiones=lista.contadorRepetidos("A");
         //System.out.println("El numero de repeticion de dato buscado es de "+repeticiones);

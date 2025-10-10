@@ -295,6 +295,31 @@ public class ListaSimpleEnlazada<T extends Comparable<T>> implements Iterable<T>
         return contador;
     }
 
+    //EJERCICIO 10: UNIR LISTAS
+    public static <T extends Comparable<T>> ListaSimpleEnlazada<T> concatenar(
+            ListaSimpleEnlazada<T> lista1,
+            ListaSimpleEnlazada<T> lista2) {
+
+        ListaSimpleEnlazada<T> resultado = new ListaSimpleEnlazada<>();
+
+        // Copiar los elementos de la primera lista
+        Nodo<T> actual = lista1.primero;
+        while (actual != null) {
+            resultado.agregarUltimo(new Nodo<>(actual.getDato()));
+            actual = actual.getProximo();
+        }
+
+        // Copiar los elementos de la segunda lista
+        actual = lista2.primero;
+        while (actual != null) {
+            resultado.agregarUltimo(new Nodo<>(actual.getDato()));
+            actual = actual.getProximo();
+        }
+
+        return resultado;
+    }
+
+
     @Override
     public Iterator<T> iterator() {
         return new ListaIterator<>(primero);
